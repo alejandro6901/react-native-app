@@ -8,8 +8,6 @@ const Tab = createBottomTabNavigator();
 
 import RestaurantsScreen from "../screens/Restaurants";
 import TopRestaurantsScreen from "../screens/TopRestaurants";
-import MyAccountScreen from "../screens/MyAccount";
-import SearchScreen from "../screens/Search";
 
 function RestaurantStack() {
   return (<CreateStacks name="Restaurantes" component={RestaurantsScreen} />);
