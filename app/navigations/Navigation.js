@@ -8,6 +8,8 @@ const Tab = createBottomTabNavigator();
 
 import RestaurantsScreen from "../screens/Restaurants";
 import TopRestaurantsScreen from "../screens/TopRestaurants";
+import SearchScreen from "../screens/Search";
+import MyAccountScreen from "../screens/MyAccount";
 
 function RestaurantStack() {
   return (<CreateStacks name="Restaurantes" component={RestaurantsScreen} />);
@@ -15,6 +17,14 @@ function RestaurantStack() {
 
 function TopRestaurantsStacks() {
   return (<CreateStacks name="Top Restaurantes" component={TopRestaurantsScreen} />);
+}
+
+function SearchStacks() {
+  return (<CreateStacks name="Buscar" component={SearchScreen} />);
+}
+
+function AccountStacks() {
+  return (<CreateStacks name="Mi Cuenta" component={MyAccountScreen} />);
 }
 
 export default function Navigation() {
@@ -26,7 +36,7 @@ export default function Navigation() {
           component={RestaurantStack}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="home" color={color} size={size} />
+              <MaterialCommunityIcons name="silverware-fork-knife" color={color} size={size} />
             ),
           }}
         />
@@ -35,7 +45,25 @@ export default function Navigation() {
           component={TopRestaurantsStacks}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="home" color={color} size={size} />
+              <MaterialCommunityIcons name="star-circle-outline" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Buscar"
+          component={SearchStacks}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="cloud-search-outline" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Mi Cuenta"
+          component={AccountStacks}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="account" color={color} size={size} />
             ),
           }}
         />
