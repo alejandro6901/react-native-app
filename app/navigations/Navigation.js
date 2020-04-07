@@ -9,7 +9,8 @@ const Tab = createBottomTabNavigator();
 import RestaurantsScreen from "../screens/Restaurants";
 import TopRestaurantsScreen from "../screens/TopRestaurants";
 import SearchScreen from "../screens/Search";
-import MyAccountScreen from "../screens/MyAccount";
+import MyAccountScreen from "../screens/Account/MyAccount";
+import LoginScreen from "../screens/Account/Login";
 
 function RestaurantStack() {
   return (<CreateStacks name="Restaurantes" component={RestaurantsScreen} />);
@@ -25,6 +26,10 @@ function SearchStacks() {
 
 function AccountStacks() {
   return (<CreateStacks name="Mi Cuenta" component={MyAccountScreen} />);
+}
+
+function LoginStack() {
+  return( <CreateStacks name="Login" component={LoginScreen} /> );
 }
 
 export default function Navigation() {
