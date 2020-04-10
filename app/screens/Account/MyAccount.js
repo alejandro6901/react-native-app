@@ -5,7 +5,7 @@ import UserGuest from "./UserGuest";
 import UserLogged from "./UserLogged";
 
 export default function MyAccount(props) {
-  const {navigation} = props;
+  const { navigation } = props;
   const [login, setLogin] = useState(null);
 
   useEffect(() => {
@@ -18,5 +18,5 @@ export default function MyAccount(props) {
     return <Loading isVisible={true} text="Cargando..." />;
   }
 
-  return login ? <UserLogged /> : <UserGuest navigation={navigation} />
+  return login ? <UserLogged /> : <UserGuest navigation={navigation} />;
 }
