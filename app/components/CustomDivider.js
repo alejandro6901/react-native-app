@@ -1,14 +1,15 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import { Divider } from "react-native-elements";
+import React, { useContext } from 'react';
+import { StyleSheet } from 'react-native';
+import { Divider } from 'react-native-elements';
+import { ThemeContext } from '../context/ThemeContext';
 
 export default function CustomDivider() {
-  return <Divider style={styles.divider} />;
+	const [ theme ] = useContext(ThemeContext);
+	return <Divider style={[ styles.divider, { backgroundColor: theme.color } ]} />;
 }
 
 const styles = StyleSheet.create({
-  divider: {
-    backgroundColor: "#00a680",
-    margin: 40,
-  },
+	divider: {
+		margin: 40
+	}
 });

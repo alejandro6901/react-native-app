@@ -1,74 +1,83 @@
-import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Button, Input, Icon } from 'react-native-elements';
+import React, { useState, useContext } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import { Button } from 'react-native-elements';
 import { validateEmail } from '../../helpers/Validations';
 import * as firebase from 'firebase';
+import { ThemeContext } from '../../context/ThemeContext';
+import InputText from '../../components/InputText';
+import { HelperText } from 'react-native-paper';
 
-export default function RegisterForm(props) {
-  const { toastRef } = props;
+export default function RegisterForm() {
+	const [ theme ] = useContext(ThemeContext);
 	const [ hidePassword, setHidePassword ] = useState(true);
 	const [ hideRepeatPassword, setHideRepeatPassword ] = useState(true);
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
 	const [ repeatPassword, setRepeatPassword ] = useState('');
+	const [ isError, setError ] = useState(false);
+	const [ errorMessage, setErrorMessage ] = useState(false);
 
 	const register = async () => {
-		if (!email || !password || !repeatPassword) return toastRef.current.show("Campos Requeridos");
-		if (!validateEmail(email)) return console.log('email incorrecto');
-		if (password !== repeatPassword) return console.log('las contraseñas no coinciden');
-		await firebase
-			.auth()
-			.createUserWithEmailAndPassword(email, password)
-			.then(() => {
-				console.log('usuario creado');
-			})
-			.catch(() => {
-				console.log('error al crear la cuenta');
-			});
+		if (!email || !password || !repeatPassword) {
+			setError(true);
+			setErrorMessage("Campo requerido")
+		} else {
+			if (validateEmail(email)) {
+				setError(false);
+				if (password !== repeatPassword) {
+					console.log('Error: Las contraseñas no coinciden');
+				} else {
+					setError(false);
+					await firebase
+						.auth()
+						.createUserWithEmailAndPassword(email, password)
+						.then(() => {
+							console.log('Creado Usuario: ' + email);
+						})
+						.catch((e) => {
+							console.log('Error al crear cuenta');
+						});
+				}
+			} else {
+				setError(false);
+				console.log('Error: Por favor ingrese un email válido');
+			}
+		}
 	};
 
 	return (
 		<View style={styles.formContainer}>
-			<Input
-				placeholder="Correo electrónico"
-				containerStyle={styles.inputForm}
+			<InputText
+				label="Correo Electrónico"
+				text={email}
+				isActive={true}
+				keyboardType="email-address"
+				isError={isError}
+				errorMessage={errorMessage}
 				onChange={(e) => setEmail(e.nativeEvent.text)}
-				rightIcon={<Icon type="material-community" name="email" iconStyle={styles.iconRight} />}
 			/>
-			<Input
-				placeholder="Contraseña"
-				password={true}
-				secureTextEntry={hidePassword}
-				containerStyle={styles.inputForm}
+			<InputText
+				label="Contraseña"
+				text={password}
+				isActive={true}
+				isError={isError}
+				errorMessage={errorMessage}
 				onChange={(e) => setPassword(e.nativeEvent.text)}
-				rightIcon={
-					<Icon
-						type="material-community"
-						name={hidePassword ? 'eye-outline' : 'eye-off-outline'}
-						iconStyle={styles.iconRight}
-						onPress={() => setHidePassword(!hidePassword)}
-					/>
-				}
+				secureTextEntry={true}
 			/>
-			<Input
-				placeholder="Repetir Contraseña"
-				password={true}
-				secureTextEntry={hideRepeatPassword}
-				containerStyle={styles.inputForm}
+			<InputText
+				label="Repetir Contraseña"
+				text={repeatPassword}
+				isActive={true}
+				isError={isError}
+				errorMessage={errorMessage}
 				onChange={(e) => setRepeatPassword(e.nativeEvent.text)}
-				rightIcon={
-					<Icon
-						type="material-community"
-						name={hideRepeatPassword ? 'eye-outline' : 'eye-off-outline'}
-						iconStyle={styles.iconRight}
-						onPress={() => setHideRepeatPassword(!hideRepeatPassword)}
-					/>
-				}
+				secureTextEntry={true}
 			/>
 			<Button
 				title="Unirse"
 				containerStyle={styles.btnContainerRegister}
-				buttonStyle={styles.btnRegister}
+				buttonStyle={{ backgroundColor: theme.color }}
 				onPress={register}
 			/>
 		</View>
@@ -77,22 +86,11 @@ export default function RegisterForm(props) {
 
 const styles = StyleSheet.create({
 	formContainer: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		marginTop: 30
+		margin: 10,
+		backgroundColor: '#F2F2F2'
 	},
 	btnContainerRegister: {
 		marginTop: 20,
 		width: '95%'
-	},
-	btnRegister: {
-		backgroundColor: '#00a680'
-	},
-	iconRight: {
-		color: '#c1c1c1'
-	},
-	inputForm: {
-		marginTop: 20
 	}
 });
