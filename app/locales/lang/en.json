@@ -1,29 +1,48 @@
 {
-  "navigationTabs": {
-    "restaurants": "Restaurants",
-    "topRestaurants": "Top 5",
-    "search": "Search",
-    "account": "My account",
-    "settings": "Settings"
+	"navigationTabs": {
+		"restaurants": "Restaurants",
+		"topRestaurants": "Top 5",
+		"search": "Search",
+		"account": "My account",
+		"settings": "Settings"
+	},
+	"accountsStack": {
+		"myAccount": "My Account",
+		"login": "Login",
+		"register": "Register"
+	},
+	"restaurantsStack": {
+		"restaurants": "Restaurants"
+	},
+	"topRestaurantsStack": {
+		"topRestaurants": "Top 5"
+	},
+	"searchStack": {
+		"search": "Search"
+	},
+	"settingStack": {
+    "settings": "Settings",
+    "selectTheme": "Choose a theme",
+    "successBtn": "Success",
+    "primaryBtn": "Primary",
+    "selectLanguage": "Choose a language",
+    "englishBtn": "English",
+    "spanishBtn": "Spanish"
+	},
+	"userGuestScreen": {
+		"loading": "Loading",
+		"title": "Check your profile on 5 Forks",
+    "description": "How would you describe your best restaurant? Search and visualize the best restaurants in a simple way, vote which one you liked the most and comment on how your experience has been.",
+    "buttonText": "View your profile" 
   },
-  "accountsStack": {
-    "myAccount": "My Account",
-    "login": "Login",
-    "register":"Register"
+  "loginScreen": {
+    "noAccountText": "Not account yet?",
+    "signUp": "Sign up"
   },
-  "restaurantsStack": {
-    "restaurants":"Restaurants" 
-  },
-  "topRestaurantsStack": {
-    "topRestaurants": "Top 5"
-  },
-  "searchStack": {
-    "search":"Search"
-  },
-  "settingStack": {
-    "settings":"Settings"
-  },
-  "userGuestScreen": {
-    "text": "Check your profile on 5 Forts"
+  "registerScreen": {
+    "email": "Email",
+    "password": "Password",
+    "repeatPassword": "Repeat Password",
+    "signUp": "Sign Up"
   }
 }

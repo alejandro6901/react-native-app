@@ -2,20 +2,24 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { ThemeContext } from '../../context/ThemeContext';
 import { STACK_REGISTER } from '../../navigations/Stacks/RoutesNames';
+import { LanguageContext } from '../../context/LanguageContext';
+import I18n from '../../utils/i18n';
 
 export default function CreateAccount(props) {
 	const { navigation } = props;
 	const [ theme ] = useContext(ThemeContext);
+	const [ lang ] = useContext(LanguageContext);
+
 	return (
 		<Text style={styles.textRegister}>
-			¿Aún no tienes una cuenta?{' '}
+		    {I18n.t('loginScreen.noAccountText', { locale: lang })}{' '}
 			<Text
 				style={[ styles.btnRegister, { color: theme.text.color } ]}
 				onPress={() => {
 					navigation.navigate(STACK_REGISTER);
 				}}
 			>
-				Registrate
+				{I18n.t('loginScreen.signUp', { locale: lang })}
 			</Text>
 		</Text>
 	);
@@ -23,6 +27,7 @@ export default function CreateAccount(props) {
 
 const styles = StyleSheet.create({
 	textRegister: {
+		textAlign:'center',
 		marginTop: 15,
 		marginLeft: 10,
 		marginRight: 10
