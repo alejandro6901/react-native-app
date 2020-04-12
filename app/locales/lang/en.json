@@ -3,6 +3,27 @@
     "restaurants": "Restaurants",
     "topRestaurants": "Top 5",
     "search": "Search",
-    "account": "My account"
+    "account": "My account",
+    "settings": "Settings"
+  },
+  "accountsStack": {
+    "myAccount": "My Account",
+    "login": "Login",
+    "register":"Register"
+  },
+  "restaurantsStack": {
+    "restaurants":"Restaurants" 
+  },
+  "topRestaurantsStack": {
+    "topRestaurants": "Top 5"
+  },
+  "searchStack": {
+    "search":"Search"
+  },
+  "settingStack": {
+    "settings":"Settings"
+  },
+  "userGuestScreen": {
+    "text": "Check your profile on 5 Forts"
   }
 }

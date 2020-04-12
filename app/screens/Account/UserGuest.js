@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, View, ScrollView, Text, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 import { ThemeContext } from '../../context/ThemeContext';
+import { STACK_LOGIN } from '../../navigations/Stacks/RoutesNames';
 
 export default function UserGuest(props) {
 	const { navigation } = props;
@@ -18,11 +19,11 @@ export default function UserGuest(props) {
 				</Text>
 				<View style={style.viewBtn}>
 					<Button
-						buttonStyle={{backgroundColor: theme.color}}
+						buttonStyle={{ backgroundColor: theme.button.backgroundColor }}
 						containerStyle={style.btnContainer}
 						title="Ver tu perfil"
 						onPress={() => {
-							navigation.navigate('Login');
+							navigation.navigate(STACK_LOGIN);
 						}}
 					/>
 				</View>
@@ -54,9 +55,6 @@ const style = StyleSheet.create({
 	viewBtn: {
 		flex: 1,
 		alignItems: 'center'
-	},
-	btnStyle: {
-		backgroundColor: '#00a680'
 	},
 	btnContainer: {
 		width: '70%'

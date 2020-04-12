@@ -1,0 +1,12 @@
+export const TAB_ACCOUNT = "tabAccount";
+export const TAB_RESTAURANTS = "tabRestaurants";
+export const TAB_TOP_RESTAURANTS = "tabTopRestaurants";
+export const TAB_SEARCH = "tabSeach";
+export const TAB_SETTINGS = "tabSettings";
+export const STACK_LOGIN = "stackLogin";
+export const STACK_MY_ACCOUNT = "stackMyAccount";
+export const STACK_REGISTER = "stackRegister";
+export const STACK_RESTAURANTS = "stackRestaurants";
+export const STACK_TOP_RESTAURANTS = "stackTopRestaurants";
+export const STACK_SEARCH = "stackSeach";
+export const STACK_SETTINGS = "stackSettings";

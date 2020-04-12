@@ -1,42 +1,43 @@
-import React from "react";
-import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
-import { Overlay } from "react-native-elements";
+import React, { useContext } from 'react';
+import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
+import { Overlay } from 'react-native-elements';
+import { ThemeContext } from '../context/ThemeContext';
 
 export default function Loading(props) {
-  const { isVisible, text } = props;
-
-  return (
-    <Overlay
-      isVisible={isVisible}
-      windowBackgroundColor="rgba(0,0,0,.5)"
-      overlayBackgroundColor="transparent"
-      overlayStyle={style.overlay}
-    >
-      <View style={style.view}>
-        <ActivityIndicator size="large" color="#00a680" />
-        {text && <Text style={style.text}>{text}</Text>}
-      </View>
-    </Overlay>
-  );
+	const { isVisible, text } = props;
+	const [ theme ] = useContext(ThemeContext);
+	return (
+		<Overlay
+			isVisible={isVisible}
+			windowBackgroundColor={theme.overlayWindow.backgroundColor}
+			overlayBackgroundColor={theme.overlayBackground.backgroundColor}
+			overlayStyle={[
+				style.overlay,
+				{ backgroundColor: theme.overlay.backgroundColor, borderColor: theme.overlay.borderColor }
+			]}
+		>
+			<View style={style.view}>
+				<ActivityIndicator size="large" color={theme.loading.color} />
+				{text && <Text style={[ style.text, { color: theme.text.color } ]}>{text}</Text>}
+			</View>
+		</Overlay>
+	);
 }
 
 const style = StyleSheet.create({
-  overlay: {
-    height: 100,
-    width: 200,
-    backgroundColor: "#fff",
-    borderColor: "#00a680",
-    borderWidth: 2,
-    borderRadius: 10,
-  },
-  view: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  text: {
-    color: "#00a680",
-    textTransform: "uppercase",
-    marginTop: 10,
-  },
+	overlay: {
+		height: 100,
+		width: 200,
+		borderWidth: 2,
+		borderRadius: 10
+	},
+	view: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	text: {
+		textTransform: 'uppercase',
+		marginTop: 10
+	}
 });

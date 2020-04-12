@@ -5,7 +5,7 @@ import { ThemeContext } from '../context/ThemeContext';
 
 export default function CustomDivider() {
 	const [ theme ] = useContext(ThemeContext);
-	return <Divider style={[ styles.divider, { backgroundColor: theme.color } ]} />;
+	return <Divider style={[ styles.divider, { backgroundColor: theme.divider.backgroundColor } ]} />;
 }
 
 const styles = StyleSheet.create({

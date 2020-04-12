@@ -1,11 +1,10 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { validateEmail } from '../../helpers/Validations';
 import * as firebase from 'firebase';
 import { ThemeContext } from '../../context/ThemeContext';
 import InputText from '../../components/InputText';
-import { HelperText } from 'react-native-paper';
 
 export default function RegisterForm() {
 	const [ theme ] = useContext(ThemeContext);
@@ -20,7 +19,7 @@ export default function RegisterForm() {
 	const register = async () => {
 		if (!email || !password || !repeatPassword) {
 			setError(true);
-			setErrorMessage("Campo requerido")
+			setErrorMessage('Campo requerido');
 		} else {
 			if (validateEmail(email)) {
 				setError(false);
@@ -46,7 +45,7 @@ export default function RegisterForm() {
 	};
 
 	return (
-		<View style={styles.formContainer}>
+		<View style={[ styles.formContainer, { backgroundColor: theme.formContainer } ]}>
 			<InputText
 				label="Correo Electrónico"
 				text={email}
@@ -77,7 +76,7 @@ export default function RegisterForm() {
 			<Button
 				title="Unirse"
 				containerStyle={styles.btnContainerRegister}
-				buttonStyle={{ backgroundColor: theme.color }}
+				buttonStyle={{ backgroundColor: theme.button.backgroundColor }}
 				onPress={register}
 			/>
 		</View>
@@ -86,8 +85,7 @@ export default function RegisterForm() {
 
 const styles = StyleSheet.create({
 	formContainer: {
-		margin: 10,
-		backgroundColor: '#F2F2F2'
+		margin: 10
 	},
 	btnContainerRegister: {
 		marginTop: 20,
