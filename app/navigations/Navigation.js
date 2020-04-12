@@ -1,73 +1,114 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import CreateStacks from "./Stacks";
+import React, { useContext } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import AccountStack from './Stacks/AccountStacks';
+import RestaurantStack from './Stacks/RestaurantStacks';
+import SearchStack from './Stacks/SearchStacks';
+import SettingStack from './Stacks/SettingStacks';
+import TopRestaurantsStack from './Stacks/TopRestaurantsStacks';
 
-const Tab = createBottomTabNavigator();
+import { LanguageContext } from '../context/LanguageContext';
+import { ThemeContext } from '../context/ThemeContext';
+import I18n from '../utils/i18n';
 
-import RestaurantsScreen from "../screens/Restaurants";
-import TopRestaurantsScreen from "../screens/TopRestaurants";
-import SearchScreen from "../screens/Search";
-import MyAccountScreen from "../screens/MyAccount";
-
-function RestaurantStack() {
-  return (<CreateStacks name="Restaurantes" component={RestaurantsScreen} />);
-}
-
-function TopRestaurantsStacks() {
-  return (<CreateStacks name="Top Restaurantes" component={TopRestaurantsScreen} />);
-}
-
-function SearchStacks() {
-  return (<CreateStacks name="Buscar" component={SearchScreen} />);
-}
-
-function AccountStacks() {
-  return (<CreateStacks name="Mi Cuenta" component={MyAccountScreen} />);
-}
+/* BEGIN IMPORTING ROUTES NAMES */
+import {
+	TAB_ACCOUNT,
+	TAB_RESTAURANTS,
+	TAB_TOP_RESTAURANTS,
+	TAB_SEARCH,
+	TAB_SETTINGS
+} from '../navigations/Stacks/RoutesNames';
+/* END IMPORTING ROUTES NAMES */
 
 export default function Navigation() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Restaurantes"
-          component={RestaurantStack}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="silverware-fork-knife" color={color} size={size} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Top 5"
-          component={TopRestaurantsStacks}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="star-circle-outline" color={color} size={size} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Buscar"
-          component={SearchStacks}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="cloud-search-outline" color={color} size={size} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Mi Cuenta"
-          component={AccountStacks}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="account" color={color} size={size} />
-            ),
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
+	const [ theme ] = useContext(ThemeContext);
+	const [ lang ] = useContext(LanguageContext);
+
+	const Tab = createBottomTabNavigator();
+
+	return (
+		/* BEGIN CREATE BOTTOM TABS*/
+		<NavigationContainer>
+		  <Tab.Navigator
+			initialRouteName={TAB_ACCOUNT}
+			tabBarOptions={{
+			  activeTintColor: theme.tab.color
+			}}
+		  >
+			<Tab.Screen
+			  name={TAB_RESTAURANTS}
+			  component={RestaurantStack}
+			  options={{
+				title: I18n.t("navigationTabs.restaurants", {locale: lang}),
+				tabBarIcon: ({ color, size }) => (
+				  <MaterialCommunityIcons
+					name="silverware-fork-knife"
+					color={color}
+					size={size}
+				  />
+				)
+			  }}
+			/>
+			<Tab.Screen
+			  name={TAB_TOP_RESTAURANTS}
+			  component={TopRestaurantsStack}
+			  options={{
+				title: I18n.t("navigationTabs.topRestaurants", {locale: lang}),
+				tabBarIcon: ({ color, size }) => (
+				  <MaterialCommunityIcons
+					name="star-circle-outline"
+					color={color}
+					size={size}
+				  />
+				)
+			  }}
+			/>
+			<Tab.Screen
+			  name={TAB_SEARCH}
+			  component={SearchStack}
+			  options={{
+				title: I18n.t("navigationTabs.search", {locale: lang}),
+				tabBarIcon: ({ color, size }) => (
+				  <MaterialCommunityIcons
+					name="cloud-search-outline"
+					color={color}
+					size={size}
+				  />
+				)
+			  }}
+			/>
+			<Tab.Screen
+			  name={TAB_ACCOUNT}
+			  component={AccountStack}
+			  options={{
+				title: I18n.t("navigationTabs.account", {locale: lang}),
+				tabBarIcon: ({ color, size }) => (
+				  <MaterialCommunityIcons
+					name="account"
+					color={color}
+					size={size}
+				  />
+				)
+			  }}
+			/>
+			<Tab.Screen
+			  name={TAB_SETTINGS}
+			  component={SettingStack}
+			  options={{
+				title: I18n.t("navigationTabs.settings", {locale: lang}),
+				tabBarIcon: ({ color, size }) => (
+				  <MaterialCommunityIcons
+					name="settings"
+					color={color}
+					size={size}
+				  />
+				)
+			  }}
+			/>
+		  </Tab.Navigator>
+		</NavigationContainer>
+		/* END CREATE BOTTOM TABS*/
+	  );
 }

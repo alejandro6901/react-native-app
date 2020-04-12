@@ -1,0 +1,29 @@
+{
+  "navigationTabs": {
+    "restaurants": "Restaurantes",
+    "topRestaurants": "Top 5",
+    "search": "Buscar",
+    "account": "Mi Cuenta",
+    "settings": "Ajustes"
+  },
+  "accountsStack": {
+    "myAccount": "Mi Cuenta",
+    "login": "Ingresar",
+    "register":"Registrarse"
+  },
+  "restaurantsStack": {
+    "restaurants":"Restaurantes" 
+  },
+  "topRestaurantsStack": {
+    "topRestaurants": "Top 5"
+  },
+  "searchStack": {
+    "search":"Buscar"
+  },
+  "settingStack": {
+    "settings":"Ajustes"
+  },
+  "userGuestScreen": {
+    "text": "Consulta tu Perfil de 5 Tenedores"
+  }
+}
