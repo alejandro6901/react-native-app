@@ -3,25 +3,25 @@ import { StyleSheet, View, ScrollView, Text, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 import { ThemeContext } from '../../context/ThemeContext';
 import { STACK_LOGIN } from '../../navigations/Stacks/RoutesNames';
+import { LanguageContext } from '../../context/LanguageContext';
+import I18n from '../../utils/i18n';
 
 export default function UserGuest(props) {
 	const { navigation } = props;
 	const [ theme, setTheme ] = useContext(ThemeContext);
+	const [ lang ] = useContext(LanguageContext);
 
 	return (
 		<ThemeContext.Provider value={[ theme, setTheme ]}>
 			<ScrollView style={style.viewBody} centerContent={true}>
 				<Image style={style.image} source={require('../../../assets/user-guest.jpg')} resizeMode="contain" />
-				<Text style={style.title}>Consulta tu Perfil de 5 Tenedores</Text>
-				<Text style={style.description}>
-					¿ Como describirías tu mejor restaurante ? Busca y visualiza los mejores restaurantes de una forma
-					sencilla, vota cual te ha gustado más y comenta como ha sido tu experencia.
-				</Text>
+				<Text style={style.title}>{I18n.t('userGuestScreen.title', { locale: lang })}</Text>
+				<Text style={style.description}>{I18n.t('userGuestScreen.description', { locale: lang })}</Text>
 				<View style={style.viewBtn}>
 					<Button
 						buttonStyle={{ backgroundColor: theme.button.backgroundColor }}
 						containerStyle={style.btnContainer}
-						title="Ver tu perfil"
+						title={I18n.t('userGuestScreen.buttonText', { locale: lang })}
 						onPress={() => {
 							navigation.navigate(STACK_LOGIN);
 						}}

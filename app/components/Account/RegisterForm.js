@@ -5,6 +5,8 @@ import { validateEmail } from '../../helpers/Validations';
 import * as firebase from 'firebase';
 import { ThemeContext } from '../../context/ThemeContext';
 import InputText from '../../components/InputText';
+import { LanguageContext } from '../../context/LanguageContext';
+import I18n from '../../utils/i18n';
 
 export default function RegisterForm() {
 	const [ theme ] = useContext(ThemeContext);
@@ -15,6 +17,7 @@ export default function RegisterForm() {
 	const [ repeatPassword, setRepeatPassword ] = useState('');
 	const [ isError, setError ] = useState(false);
 	const [ errorMessage, setErrorMessage ] = useState(false);
+	const [ lang ] = useContext(LanguageContext);
 
 	const register = async () => {
 		if (!email || !password || !repeatPassword) {
@@ -47,7 +50,7 @@ export default function RegisterForm() {
 	return (
 		<View style={[ styles.formContainer, { backgroundColor: theme.formContainer } ]}>
 			<InputText
-				label="Correo Electrónico"
+				label={I18n.t('registerScreen.email', { locale: lang })}
 				text={email}
 				isActive={true}
 				keyboardType="email-address"
@@ -56,7 +59,7 @@ export default function RegisterForm() {
 				onChange={(e) => setEmail(e.nativeEvent.text)}
 			/>
 			<InputText
-				label="Contraseña"
+				label={I18n.t('registerScreen.password', { locale: lang })}
 				text={password}
 				isActive={true}
 				isError={isError}
@@ -65,7 +68,7 @@ export default function RegisterForm() {
 				secureTextEntry={true}
 			/>
 			<InputText
-				label="Repetir Contraseña"
+				label={I18n.t('registerScreen.repeatPassword', { locale: lang })}
 				text={repeatPassword}
 				isActive={true}
 				isError={isError}
@@ -74,7 +77,7 @@ export default function RegisterForm() {
 				secureTextEntry={true}
 			/>
 			<Button
-				title="Unirse"
+				title={I18n.t('registerScreen.signUp', { locale: lang })}
 				containerStyle={styles.btnContainerRegister}
 				buttonStyle={{ backgroundColor: theme.button.backgroundColor }}
 				onPress={register}
