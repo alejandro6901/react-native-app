@@ -21,28 +21,28 @@
 		"search": "Search"
 	},
 	"settingStack": {
-    "settings": "Settings",
-    "selectTheme": "Choose a theme",
-    "successBtn": "Success",
-    "primaryBtn": "Primary",
-    "selectLanguage": "Choose a language",
-    "englishBtn": "English",
-    "spanishBtn": "Spanish"
+		"settings": "Settings",
+		"selectTheme": "Choose a theme",
+		"successBtn": "Success",
+		"primaryBtn": "Primary",
+		"selectLanguage": "Choose a language",
+		"englishBtn": "English",
+		"spanishBtn": "Spanish"
 	},
 	"userGuestScreen": {
 		"loading": "Loading",
 		"title": "Check your profile on 5 Forks",
-    "description": "How would you describe your best restaurant? Search and visualize the best restaurants in a simple way, vote which one you liked the most and comment on how your experience has been.",
-    "buttonText": "View your profile" 
-  },
-  "loginScreen": {
-    "noAccountText": "Not account yet?",
-    "signUp": "Sign up"
-  },
-  "registerScreen": {
-    "email": "Email",
-    "password": "Password",
-    "repeatPassword": "Repeat Password",
-    "signUp": "Sign Up"
-  }
+		"description": "How would you describe your best restaurant? Search and visualize the best restaurants in a simple way, vote which one you liked the most and comment on how your experience has been.",
+		"buttonText": "View your profile"
+	},
+	"loginScreen": {
+		"noAccountText": "Not account yet?",
+		"signUp": "Sign up"
+	},
+	"registerScreen": {
+		"email": "Email",
+		"password": "Password",
+		"repeatPassword": "Repeat Password",
+		"signUp": "Sign Up"
+	}
 }

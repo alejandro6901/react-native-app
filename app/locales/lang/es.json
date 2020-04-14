@@ -1,48 +1,48 @@
 {
-  "navigationTabs": {
-    "restaurants": "Restaurantes",
-    "topRestaurants": "Top 5",
-    "search": "Buscar",
-    "account": "Mi Cuenta",
-    "settings": "Ajustes"
-  },
-  "accountsStack": {
-    "myAccount": "Mi Cuenta",
-    "login": "Ingresar",
-    "register":"Registrarse"
-  },
-  "restaurantsStack": {
-    "restaurants":"Restaurantes" 
-  },
-  "topRestaurantsStack": {
-    "topRestaurants": "Top 5"
-  },
-  "searchStack": {
-    "search":"Buscar"
-  },
-  "settingStack": {
-    "settings":"Ajustes",
-    "selectTheme": "Selecciona un tema",
-    "successBtn": "Verde",
-    "primaryBtn": "Azúl",
-    "selectLanguage": "Selecciona un idioma",
-    "englishBtn": "Ingles",
-    "spanishBtn": "Español"
-  },
-  "userGuestScreen": {
+	"navigationTabs": {
+		"restaurants": "Restaurantes",
+		"topRestaurants": "Top 5",
+		"search": "Buscar",
+		"account": "Mi Cuenta",
+		"settings": "Ajustes"
+	},
+	"accountsStack": {
+		"myAccount": "Mi Cuenta",
+		"login": "Ingresar",
+		"register": "Registrarse"
+	},
+	"restaurantsStack": {
+		"restaurants": "Restaurantes"
+	},
+	"topRestaurantsStack": {
+		"topRestaurants": "Top 5"
+	},
+	"searchStack": {
+		"search": "Buscar"
+	},
+	"settingStack": {
+		"settings": "Ajustes",
+		"selectTheme": "Selecciona un tema",
+		"successBtn": "Verde",
+		"primaryBtn": "Primario",
+		"selectLanguage": "Selecciona un idioma",
+		"englishBtn": "Ingles",
+		"spanishBtn": "Español"
+	},
+	"userGuestScreen": {
 		"loading": "Cargando",
 		"title": "Consulta tu Perfil de 5 Tenedores",
-    "description": "¿Como describirías tu mejor restaurante? Busca y visualiza los mejores restaurantes de una forma sencilla, vota cúal te ha gustado más y comenta como ha sido tu experencia.",
-    "buttonText": "Ver tu perfil" 
-  },
-  "loginScreen": {
-    "noAccountText": "¿Aún no tienes una cuenta?",
-    "signUp": "Registrate"
-  },
-  "registerScreen": {
-    "email": "Correo Electrónico",
-    "password": "Contraseña",
-    "repeatPassword": "Repetir Contraseña",
-    "signUp": "Unirse"
-  }
+		"description": "¿Como describirías tu mejor restaurante? Busca y visualiza los mejores restaurantes de una forma sencilla, vota cúal te ha gustado más y comenta como ha sido tu experencia.",
+		"buttonText": "Ver tu perfil"
+	},
+	"loginScreen": {
+		"noAccountText": "¿Aún no tienes una cuenta?",
+		"signUp": "Registrate"
+	},
+	"registerScreen": {
+		"email": "Correo Electrónico",
+		"password": "Contraseña",
+		"repeatPassword": "Repetir Contraseña",
+		"signUp": "Unirse"
+	}
 }
