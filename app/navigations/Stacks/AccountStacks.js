@@ -20,7 +20,6 @@ const Stack = createStackNavigator();
 
 export default function AccountStacks() {
 	const [ lang ] = useContext(LanguageContext);
-
 	return (
 		<Stack.Navigator>
 			<Stack.Screen

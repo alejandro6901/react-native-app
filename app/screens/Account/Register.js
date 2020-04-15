@@ -4,13 +4,13 @@ import ImageLogo from '../../components/ImageLogo';
 import CustomViewContainer from '../../components/CustomViewContainer';
 import RegisterForm from '../../components/Account/RegisterForm';
 
-export default function Register() {
-
+export default function Register(props) {
+	const { navigation } = props;
 	return (
 		<KeyboardAwareScrollView >
 			<ImageLogo />
 			<CustomViewContainer>
-				<RegisterForm />
+				<RegisterForm  navigation={navigation}/>
 			</CustomViewContainer>
 		</KeyboardAwareScrollView>
 	);

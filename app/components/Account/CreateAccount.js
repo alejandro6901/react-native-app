@@ -28,7 +28,6 @@ export default function CreateAccount(props) {
 const styles = StyleSheet.create({
 	textRegister: {
 		textAlign:'center',
-		marginTop: 15,
 		marginLeft: 10,
 		marginRight: 10
 	},

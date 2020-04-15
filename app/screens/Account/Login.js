@@ -5,6 +5,7 @@ import ImageLogo from '../../components/ImageLogo';
 import CustomViewContainer from '../../components/CustomViewContainer';
 import CustomDivider from '../../components/CustomDivider';
 import CreateAccount from '../../components/Account/CreateAccount';
+import LoginForm from '../../components/Account/LoginForm';
 
 
 export default function Login(props) {
@@ -13,7 +14,7 @@ export default function Login(props) {
 		<ScrollView>
 			<ImageLogo />
 			<CustomViewContainer>
-				<Text>Form Login...</Text>
+				<LoginForm navigation={navigation}  />
 				<CreateAccount navigation={navigation} />
 			</CustomViewContainer>
 			<CustomDivider />

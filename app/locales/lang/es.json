@@ -37,12 +37,19 @@
 	},
 	"loginScreen": {
 		"noAccountText": "¿Aún no tienes una cuenta?",
-		"signUp": "Registrate"
+		"signUp": "Registrate",
+		"email": "Correo Electrónico",
+		"password": "Contraseña",
+		"login": "Iniciar Sesión"
+		
 	},
 	"registerScreen": {
 		"email": "Correo Electrónico",
 		"password": "Contraseña",
 		"repeatPassword": "Repetir Contraseña",
 		"signUp": "Unirse"
+	},
+	"infoUserScreen": {
+		"button": "Cerrar sesión"
 	}
 }

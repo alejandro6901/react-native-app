@@ -4,9 +4,8 @@ import { TextInput, HelperText } from 'react-native-paper';
 import { ThemeContext } from '../context/ThemeContext';
 
 export default function InputText(props) {
-	const [ errorState, setErrorState ] = useState(true);
 	const [ theme ] = useContext(ThemeContext);
-	const { label, text, isActive, keyboardType, onChange, secureTextEntry, isError, errorMessage, delError} = props;
+	const { label, text, isActive, keyboardType, onChange, secureTextEntry, isError, errorMessage} = props;
 
 	return (
 		<View style={theme.input.backgroundColor}>
@@ -14,7 +13,6 @@ export default function InputText(props) {
 				label={label}
 				text={text}
 				error={isError}
-				onFocus={() => setErrorState(false)}
 				isActive={isActive}
 				keyboardType={keyboardType}
 				onChange={onChange}
@@ -22,7 +20,7 @@ export default function InputText(props) {
 				style={[ styles.inputForm, { backgroundColor: theme.input.backgroundColor } ]}
 				theme={{ colors: { primary: theme.input.color } }}
 			/>
-			<HelperText type="error" visible={errorState && isError}>
+			<HelperText type="error" visible={isError}>
 				<Text>{errorMessage}</Text>
 			</HelperText>
 		</View>

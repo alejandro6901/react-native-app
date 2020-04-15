@@ -10,27 +10,25 @@ import { validate } from '../../helpers/Validations';
 import { Snackbar } from 'react-native-paper';
 import { STACK_MY_ACCOUNT } from '../../navigations/Stacks/RoutesNames';
 
-export default function RegisterForm(props) {
+export default function LoginForm(props) {
 	const { navigation } = props;
-	const [ theme ] = useContext(ThemeContext);
-	const [ snackVisible, setSnackVisible ] = useState(false);
-	const [ email, setEmail ] = useState('');
-	const [ password, setPassword ] = useState('');
-	const [ repeatPassword, setRepeatPassword ] = useState('');
-	const [ isError, setError ] = useState(null);
 	const [ snackMessage, setSnackMessage ] = useState('');
+	const [ theme ] = useContext(ThemeContext);
+	const [ email, setEmail ] = useState('');
+	const [ snackVisible, setSnackVisible ] = useState(false);
+	const [ password, setPassword ] = useState('');
+	const [ isError, setError ] = useState(null);
 	const [ errorMessage, setErrorMessage ] = useState('');
 	const [ lang ] = useContext(LanguageContext);
 	const [ isLoading, setIsLoading ] = useState(false);
 
 	_onDismissSnackBar = () => setSnackVisible(false);
-	const register = async () => {
+	const login = async () => {
 		let form = {
 			email: email,
-			password: password,
-			password_confirmation: repeatPassword
+			password: password
 		};
-		let errors = await validate(form, 'register');
+		let errors = await validate(form, 'login');
 		if (Object.keys(errors).length > 0) {
 			setError(true);
 			setErrorMessage(errors);
@@ -39,7 +37,7 @@ export default function RegisterForm(props) {
 			setIsLoading(true);
 			await firebase
 				.auth()
-				.createUserWithEmailAndPassword(email, password)
+				.signInWithEmailAndPassword(email, password)
 				.then(() => {
 					setIsLoading(false);
 					navigation.navigate(STACK_MY_ACCOUNT);
@@ -47,15 +45,15 @@ export default function RegisterForm(props) {
 				.catch((e) => {
 					setIsLoading(false);
 					setSnackVisible(true);
+					console.log(e);
 					setSnackMessage(e.message);
 				});
 		}
 	};
-
 	return (
 		<View style={[ styles.formContainer, { backgroundColor: theme.formContainer } ]}>
 			<InputText
-				label={I18n.t('registerScreen.email', { locale: lang })}
+				label={I18n.t('loginScreen.email', { locale: lang })}
 				text={email}
 				isError={isError}
 				isActive={true}
@@ -64,7 +62,7 @@ export default function RegisterForm(props) {
 				onChange={(e) => setEmail(e.nativeEvent.text)}
 			/>
 			<InputText
-				label={I18n.t('registerScreen.password', { locale: lang })}
+				label={I18n.t('loginScreen.password', { locale: lang })}
 				text={password}
 				isActive={true}
 				isError={isError}
@@ -72,22 +70,14 @@ export default function RegisterForm(props) {
 				onChange={(e) => setPassword(e.nativeEvent.text)}
 				secureTextEntry={true}
 			/>
-			<InputText
-				label={I18n.t('registerScreen.repeatPassword', { locale: lang })}
-				text={repeatPassword}
-				isActive={true}
-				isError={isError}
-				errorMessage={errorMessage['password_confirmation']}
-				onChange={(e) => setRepeatPassword(e.nativeEvent.text)}
-				secureTextEntry={true}
-			/>
+
 			<Button
-				title={I18n.t('registerScreen.signUp', { locale: lang })}
+				title={I18n.t('loginScreen.login', { locale: lang })}
 				disabled={isLoading}
 				loading={isLoading}
 				containerStyle={styles.btnContainerRegister}
 				buttonStyle={{ backgroundColor: theme.button.backgroundColor }}
-				onPress={register}
+				onPress={login}
 			/>
 			<View style={{ marginTop: 100 }}>
 				<Snackbar visible={snackVisible} onDismiss={_onDismissSnackBar} duration={3000}>
@@ -103,7 +93,6 @@ const styles = StyleSheet.create({
 		margin: 10
 	},
 	btnContainerRegister: {
-		marginTop: 20,
 		width: '95%'
 	}
 });
