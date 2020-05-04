@@ -17,17 +17,17 @@ import { LanguageContext } from '../../context/LanguageContext';
 const Stack = createStackNavigator();
 
 export default function topRestaurantsStacks() {
-	const [ lang ] = useContext(LanguageContext);
+  const [ lang ] = useContext(LanguageContext);
 
-	return (
-		<Stack.Navigator>
-			<Stack.Screen
-				name={STACK_TOP_RESTAURANTS}
-				component={TopRestaurantsScreen}
-				options={{
-					title: I18n.t('topRestaurantsStack.topRestaurants', { locale: lang })
-				}}
-			/>
-		</Stack.Navigator>
-	);
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name={STACK_TOP_RESTAURANTS}
+        component={TopRestaurantsScreen}
+        options={{
+          title: I18n.t('topRestaurantsStack.topRestaurants', { locale: lang })
+        }}
+      />
+    </Stack.Navigator>
+  );
 }
