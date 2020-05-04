@@ -1,35 +1,19 @@
-/* import React from 'react';
-import Navigation from './app/navigations/Navigation'
+import React, { useState } from 'react';
+import Navigation from './app/navigations/Navigation';
+import { firebaseApp } from './app/environments/environment';
+import { ThemeContext } from './app/context/ThemeContext';
+import { LanguageContext } from './app/context/LanguageContext';
+import CustomTheme from './app/styles/ExportThemes';
+import I18n from './app/utils/i18n';
 
 export default function App() {
-    return <Navigation />
+	const [ theme, setTheme ] = useState(CustomTheme.THEME_SUCCESS);
+	const [ lang, setLang ] = useState(I18n.locale);
+	return (
+		<LanguageContext.Provider value={[ lang, setLang ]}>
+			<ThemeContext.Provider value={[ theme, setTheme ]}>
+				<Navigation />
+			</ThemeContext.Provider>
+		</LanguageContext.Provider>
+	);
 }
- */
-
-//import liraries
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-
-// create a component
-class MyClass extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text>Project Structure</Text>
-            </View>
-        );
-    }
-}
-
-// define your styles
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});
-
-//make this component available to the app
-export default MyClass;
-
