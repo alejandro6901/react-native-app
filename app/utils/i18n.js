@@ -5,12 +5,12 @@ import es from '../locales/lang/es.json';
 
 I18n.fallbacks = true;
 I18n.translations = {
-	en,
-	es
+  en,
+  es
 };
 I18n.locale =
-	Platform.OS === 'ios'
-		? NativeModules.SettingsManager.settings.AppleLocale
-		: NativeModules.I18nManager.localeIdentifier;
+  Platform.OS === 'ios'
+    ? NativeModules.SettingsManager.settings.AppleLocale
+    : NativeModules.I18nManager.localeIdentifier;
 I18n.locale = I18n.locale.substring(0, 2);
 export default I18n;

@@ -4,12 +4,12 @@ import { Divider } from 'react-native-elements';
 import { ThemeContext } from '../context/ThemeContext';
 
 export default function CustomDivider() {
-	const [ theme ] = useContext(ThemeContext);
-	return <Divider style={[ styles.divider, { backgroundColor: theme.divider.backgroundColor } ]} />;
+  const [ theme ] = useContext(ThemeContext);
+  return <Divider style={[ styles.divider, { backgroundColor: theme.divider.backgroundColor } ]} />;
 }
 
 const styles = StyleSheet.create({
-	divider: {
-		margin: 40
-	}
+  divider: {
+    margin: 40
+  }
 });

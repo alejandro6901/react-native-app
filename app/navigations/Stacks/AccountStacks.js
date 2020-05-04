@@ -19,30 +19,30 @@ import { LanguageContext } from '../../context/LanguageContext';
 const Stack = createStackNavigator();
 
 export default function AccountStacks() {
-	const [ lang ] = useContext(LanguageContext);
-	return (
-		<Stack.Navigator>
-			<Stack.Screen
-				name={STACK_MY_ACCOUNT}
-				component={MyAccountScreen}
-				options={{
-					title: I18n.t('accountsStack.myAccount', { locale: lang })
-				}}
-			/>
-			<Stack.Screen
-				name={STACK_LOGIN}
-				component={LoginScreen}
-				options={{
-					title: I18n.t('accountsStack.login', { locale: lang })
-				}}
-			/>
-			<Stack.Screen
-				name={STACK_REGISTER}
-				component={RegisterScreen}
-				options={{
-					title: I18n.t('accountsStack.register', { locale: lang })
-				}}
-			/>
-		</Stack.Navigator>
-	);
+  const [ lang ] = useContext(LanguageContext);
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name={STACK_MY_ACCOUNT}
+        component={MyAccountScreen}
+        options={{
+          title: I18n.t('accountsStack.myAccount', { locale: lang })
+        }}
+      />
+      <Stack.Screen
+        name={STACK_LOGIN}
+        component={LoginScreen}
+        options={{
+          title: I18n.t('accountsStack.login', { locale: lang })
+        }}
+      />
+      <Stack.Screen
+        name={STACK_REGISTER}
+        component={RegisterScreen}
+        options={{
+          title: I18n.t('accountsStack.register', { locale: lang })
+        }}
+      />
+    </Stack.Navigator>
+  );
 }

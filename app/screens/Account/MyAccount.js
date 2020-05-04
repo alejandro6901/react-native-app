@@ -7,19 +7,19 @@ import { LanguageContext } from '../../context/LanguageContext';
 import I18n from '../../utils/i18n';
 
 export default function MyAccount(props) {
-	const { navigation } = props;
-	const [ login, setLogin ] = useState(null);
-	const [ lang ] = useContext(LanguageContext);
+  const { navigation } = props;
+  const [ login, setLogin ] = useState(null);
+  const [ lang ] = useContext(LanguageContext);
 
-	useEffect(() => {
-		firebase.auth().onAuthStateChanged((user) => {
-			!user ? setLogin(false) : setLogin(true);
-		});
-	}, []);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      !user ? setLogin(false) : setLogin(true);
+    });
+  }, []);
 
-	if (login === null) {
-		return <Loading isVisible={true} text={I18n.t('userGuestScreen.loading', { locale: lang })} />;
-	}
+  if (login === null) {
+    return <Loading isVisible={true} text={I18n.t('userGuestScreen.loading', { locale: lang })} />;
+  }
 
-	return login ? <UserLogged /> : <UserGuest navigation={navigation} />;
+  return login ? <UserLogged /> : <UserGuest navigation={navigation} />;
 }
